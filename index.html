@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1d1814">
+  <meta name="description" content="Play Burguer Aradas em Aveiro. Menu com hambúrgueres, especiais Big Leaguer, entradas, take away e entrega.">
+  <meta name="format-detection" content="telephone=yes">
+  <meta name="application-name" content="Play Burguer Aradas">
+  <meta name="apple-mobile-web-app-title" content="Play Burguer Aradas">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="icon" type="image/png" href="images/logo-play-burguer-criado-icone.png">
+  <link rel="preload" as="image" href="images/hit-burguer-menu.webp" fetchpriority="high">
+  <title>Play Burguer Aradas | Menu e Contactos</title>
+  <style>
+    :root{
+      --bg:#faf5ee;
+      --surface:#fffdf9;
+      --surface-2:#f1e7db;
+      --text:#1d1814;
+      --muted:#665d55;
+      --line:#e2d3c4;
+      --accent:#aa321f;
+      --gold:#c78318;
+      --success:#2f7147;
+      --radius:18px;
+      --shadow:0 16px 36px rgba(29,24,20,.08);
+      --max:1120px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+    body{
+      margin:0;
+      width:100%;
+      overflow-x:hidden;
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.55;
+      text-rendering:optimizeLegibility;
+    }
+    img{display:block;max-width:100%;height:auto}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}.btn,.tab,.round,.menu-btn{touch-action:manipulation}.btn:focus-visible,.tab:focus-visible,.round:focus-visible,.menu-btn:focus-visible{outline:3px solid #c78318;outline-offset:3px}
+    .wrap{width:min(var(--max),calc(100vw - 32px));margin-inline:auto}
+    .skip{position:absolute;left:-999px;top:auto;background:#fff;padding:10px;border-radius:10px}.skip:focus{left:16px;top:16px;z-index:100}
+
+    header{position:sticky;top:0;z-index:20;background:rgba(250,245,238,.94);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
+    .nav{min-height:96px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:-.035em;font-size:1.12rem}
+    .mark{width:100px;height:90px;display:block;background:transparent;overflow:visible}.mark img{width:100%;height:100%;object-fit:contain;object-position:center}
+    nav ul{list-style:none;display:flex;align-items:center;gap:4px;padding:0;margin:0}
+    nav a{display:inline-flex;padding:10px 12px;border-radius:999px;color:var(--muted);font-weight:700;font-size:.94rem}
+    nav a:hover,nav a:focus{background:var(--surface-2);color:var(--text);outline:none}
+    .nav-cta{background:var(--text);color:#fff!important;padding-inline:16px}
+    .menu-btn{display:none;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:9px 14px;font-weight:800;color:var(--text)}
+
+    main{overflow:hidden}
+    .hero{padding:58px 0 42px}
+    .hero-grid{display:grid;grid-template-columns:1fr .95fr;gap:34px;align-items:center}
+    .label{display:inline-flex;align-items:center;gap:8px;color:var(--accent);background:#f4e4db;border:1px solid #ead1c6;border-radius:999px;padding:8px 12px;font-weight:850;font-size:.9rem}.label:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent)}
+    h1{font-size:clamp(2.35rem,5vw,4.7rem);line-height:1.02;letter-spacing:-.07em;margin:18px 0 16px;max-width:12ch}
+    .lead{font-size:clamp(1.02rem,1.7vw,1.2rem);color:var(--muted);max-width:60ch;margin:0}
+    .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 18px;border-radius:999px;border:1px solid transparent;font-weight:850;transition:transform .15s ease}.btn:hover{transform:translateY(-1px)}.btn-primary{background:var(--text);color:#fff;box-shadow:0 14px 28px rgba(29,24,20,.15)}.btn-secondary{background:var(--surface);border-color:var(--line);color:var(--text)}
+    .quick-info{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:28px}.quick-info div{background:rgba(255,253,249,.75);border:1px solid var(--line);border-radius:14px;padding:13px;color:var(--muted)}.quick-info b{display:block;color:var(--text);font-size:.9rem}
+    .hero-card{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:16px;box-shadow:var(--shadow)}.hero-photo{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:18px;border:1px solid var(--line);background:var(--surface-2)}.hero-meta{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:16px 6px 4px}.hero-meta h2{font-size:1.25rem;margin:0;letter-spacing:-.03em}.hero-meta p{margin:4px 0 0;color:var(--muted);font-size:.93rem}.price-badge{display:inline-flex;align-items:center;justify-content:center;min-width:76px;height:54px;border-radius:16px;background:var(--accent);color:#fff;font-weight:950;font-size:1.25rem}
+
+    section{padding:48px 0}.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:22px}.section-head h2{margin:0;font-size:clamp(1.75rem,3vw,2.7rem);line-height:1.06;letter-spacing:-.055em}.section-head p{margin:8px 0 0;color:var(--muted);max-width:62ch}
+    .notice{background:#fff4df;border:1px solid #ead8b9;color:#5d421d;border-radius:16px;padding:14px 16px;font-weight:750;margin-bottom:18px}.notice strong{color:var(--accent)}
+
+    .tabs{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:18px}.tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 14px;color:var(--muted);font-weight:800;cursor:pointer}.tab[aria-selected="true"]{background:var(--text);border-color:var(--text);color:#fff}
+    .products{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.product{background:var(--surface);border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 10px 24px rgba(29,24,20,.05);display:flex;flex-direction:column}.product-img{width:100%;aspect-ratio:4/3;object-fit:cover;background:var(--surface-2)}.product-body{padding:16px;display:flex;flex-direction:column;gap:10px;flex:1}.product-top{display:flex;gap:12px;align-items:flex-start;justify-content:space-between}.product h3{margin:0;font-size:1.05rem;line-height:1.2;letter-spacing:-.02em}.product p{margin:0;color:var(--muted);font-size:.92rem}.product .price{white-space:nowrap;color:#fff;background:var(--accent);border-radius:999px;padding:6px 10px;font-weight:950;font-size:.94rem}.tag{margin-top:auto;color:var(--gold);font-size:.82rem;font-weight:850;text-transform:uppercase;letter-spacing:.04em}
+    .source-note{margin:16px 0 0;color:var(--muted);font-size:.9rem}.source-note b{color:var(--text)}
+
+    .about-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.info-card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 10px 24px rgba(29,24,20,.05)}.info-card span{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:10px;background:var(--surface-2);color:var(--accent);font-weight:900;margin-bottom:12px}.info-card h3{margin:0 0 7px}.info-card p{margin:0;color:var(--muted)}
+    .reviews{display:grid;grid-template-columns:.75fr 1.25fr;gap:16px}.rating{background:var(--text);color:#fff;border-radius:24px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;min-height:230px}.rating strong{font-size:3.5rem;line-height:1;letter-spacing:-.08em}.stars{color:#e2a324;letter-spacing:2px}.rating p{color:#d9d0c7;margin:18px 0 0}.quote{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:24px;box-shadow:var(--shadow)}blockquote{margin:0 0 16px;font-size:1.2rem;line-height:1.45;letter-spacing:-.02em}.quote footer{color:var(--muted);font-weight:750}.review-controls{display:flex;gap:10px;margin-top:18px}.round{width:42px;height:42px;border-radius:999px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:1.2rem;color:var(--text)}
+
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.contact-list{display:grid;gap:12px}.contact-row{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;display:grid;gap:5px}.contact-row small{text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:900;font-size:.75rem}.contact-row b{font-size:1.04rem}.contact-row span{color:var(--muted)}.contact-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}.copy-ok{min-height:1.3em;color:var(--success);font-weight:800;font-size:.9rem;margin-top:6px}.map-card{background:var(--surface);border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:var(--shadow);min-height:100%}.map-visual{height:260px;background:linear-gradient(135deg,#efe4d7,#fbf8f4);position:relative;border-bottom:1px solid var(--line)}.map-visual svg{position:absolute;inset:0;width:100%;height:100%}.map-info{padding:22px}.map-info h3{margin:0}.map-info p{color:var(--muted);margin:6px 0 16px}
+    .final-cta{padding:36px 0 58px}.cta-box{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:26px;display:flex;align-items:center;justify-content:space-between;gap:18px;box-shadow:var(--shadow)}.cta-box h2{margin:0;font-size:clamp(1.55rem,3vw,2.3rem);line-height:1.08;letter-spacing:-.05em}.cta-box p{margin:7px 0 0;color:var(--muted)}
+    footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted)}.foot{display:flex;align-items:center;justify-content:space-between;gap:16px}.foot b{color:var(--text)}
+
+    @media (max-width:980px){.hero-grid,.reviews,.contact-grid{grid-template-columns:1fr}.products{grid-template-columns:repeat(2,minmax(0,1fr))}.about-grid{grid-template-columns:1fr 1fr}.section-head{display:block}.menu-btn{display:inline-flex}.nav-links{display:none;position:absolute;left:16px;right:16px;top:96px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:8px;box-shadow:var(--shadow)}.nav-links.open{display:block}.nav-links ul{display:grid;gap:2px}.nav-links a{padding:12px}.nav-cta{justify-content:center}}
+    @media (max-width:640px){.wrap{width:calc(100vw - 24px)}.nav{min-height:78px}.brand{font-size:1.02rem}.mark{width:76px;height:70px}.nav-links{top:78px}.hero{padding:38px 0 28px}h1{font-size:2.55rem;max-width:11ch}.actions,.quick-info,.products,.about-grid{grid-template-columns:1fr}.actions{display:grid}.btn{width:100%}.hero-card{border-radius:20px;padding:12px}.hero-meta{grid-template-columns:1fr;padding:14px 4px 2px}.price-badge{width:max-content;min-width:74px;height:48px}.product{border-radius:18px}.product-img{aspect-ratio:16/10}.product-top{display:grid;gap:8px}.product .price{width:max-content}.contact-actions{display:grid}.quote,.rating,.map-card,.cta-box{border-radius:20px}.cta-box{align-items:flex-start;flex-direction:column}.foot{align-items:flex-start;flex-direction:column}}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+  </style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FastFoodRestaurant","name":"Play Burguer Aradas","servesCuisine":["Hambúrgueres","Comida rápida"],"priceRange":"€€","telephone":"+351913407911","address":{"@type":"PostalAddress","streetAddress":"R. Direita de Aradas 29A","postalCode":"3810-005","addressLocality":"Aveiro","addressCountry":"PT"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"135"}}
+  </script>
+</head>
+<body>
+  <a class="skip" href="#conteudo">Saltar para o conteúdo</a>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#top" aria-label="Play Burguer Aradas - início"><span class="mark"><img src="images/logo-play-burguer-criado-limpo.png" alt="Play Burguer" width="831" height="768" decoding="async"></span></a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Menu</button>
+      <nav class="nav-links" id="navLinks" aria-label="Navegação principal">
+        <ul>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#criticas">Críticas</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+          <li><a class="nav-cta" href="#contacto" data-scroll-target="contacto">Contactos</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero" id="top">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="label">Menu atualizado com preços</span>
+          <h1>Sabor de campeão em Aveiro.</h1>
+          <p class="lead">A Play Burguer apresenta hambúrgueres, especiais em baguete, prato especial e entradas. Produtos principais a 11€ com batata frita incluída.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#contacto" data-scroll-target="contacto">Contactar a loja</a>
+            <a class="btn btn-secondary" href="#mapa" data-scroll-target="mapa">Ver localização</a>
+          </div>
+          <div class="quick-info" aria-label="Informações rápidas">
+            <div><b>Avaliação</b>5,0 com 135 críticas</div>
+            <div><b>Preço</b>Produtos principais: 11€</div>
+            <div><b>Serviços</b>Local, take away e entrega</div>
+            <div><b>Localização</b>R. Direita de Aradas 29A</div>
+          </div>
+        </div>
+        <aside class="hero-card" aria-label="Destaque do menu">
+          <img class="hero-photo" src="images/hit-burguer-menu.webp" alt="Hit Burguer com batatas fritas" width="1100" height="733" fetchpriority="high" decoding="async">
+          <div class="hero-meta">
+            <div><h2>Hit Burguer</h2><p>Pão brioche, carne mista, cheddar, ovo, bacon e batata frita.</p></div>
+            <span class="price-badge">11€</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="menu">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>Menu Play Burguer</h2>
+            <p>Produtos e preços organizados com base no menu da loja. As imagens foram refeitas em formato mais nítido e aproximado dos produtos.</p>
+          </div>
+        </div>
+        <div class="notice"><strong>Nota do menu:</strong> todos os produtos principais de 11€ incluem batata frita.</div>
+        <div class="tabs" role="tablist" aria-label="Categorias do menu">
+          <button class="tab" type="button" role="tab" aria-selected="true" data-filter="todos">Tudo</button>
+          <button class="tab" type="button" role="tab" aria-selected="false" data-filter="hamburgueres">Hambúrgueres</button>
+          <button class="tab" type="button" role="tab" aria-selected="false" data-filter="especiais">Especiais</button>
+          <button class="tab" type="button" role="tab" aria-selected="false" data-filter="entradas">Entradas</button>
+        </div>
+        <div class="products" id="products">
+          <article class="product" data-group="hamburgueres"><img class="product-img" src="images/hit-burguer-menu.webp" alt="Hit Burguer" loading="lazy" decoding="async"><div class="product-body"><div class="product-top"><h3>Hit Burguer</h3><span class="price">11€</span></div><p>Pão brioche, alface, molho da casa, 200g de carne mista, queijo cheddar, ovo, cebola caramelizada e bacon.</p><span class="tag">Inclui batata frita</span></div></article>
+          <article class="product" data-group="hamburgueres"><img class="product-img" src="images/double-play-menu.webp" alt="Double Play" loading="lazy" decoding="async"><div class="product-body"><div class="product-top"><h3>Double Play</h3><span class="price">11€</span></div><p>Pão brioche, alface, molho da casa, 200g de carne mista, queijo cheddar, frango crispy, cebola caramelizada e bacon.</p><span class="tag">Inclui batata frita</span></div></article>
+          <article class="product" data-group="hamburgueres"><img class="product-img" src="images/center-field-menu.webp" alt="Center Field" loading="lazy" decoding="async"><div class="product-body"><div class="product-top"><h3>Center Field</h3><span class="price">11€</span></div><p>Pão brioche, alface, molho da casa, dupla carne mista (2x200g), queijo cheddar, cebola caramelizada e bacon.</p><span class="tag">Inclui batata frita</span></div></article>
+          <article class="product" data-group="hamburgueres"><img class="product-img" src="images/left-field-menu.webp" alt="Left Field" loading="lazy" decoding="async"><div class="product-body"><div class="product-top"><h3>Left Field</h3><span class="price">11€</span></div><p>Pão brioche, alface, molho da casa, duplo frango crispy, queijo cheddar, cebola caramelizada e bacon.</p><span class="tag">Inclui batata frita</span></div></article>
+          <article class="product" data-group="especiais"><img class="product-img" src="images/big-leaguer-menu.webp" alt="Big Leaguer" loading="lazy" decoding="async"><div class="product-body"><div class="product-top"><h3>Big Leaguer</h3><span class="price">11€</span></div><p>Pão baguete de 25 cm, batata palito, 400g de carne mista, milho, queijo fundido e bacon.</p><span class="tag">Inclui batata frita</span></div></article>
+          <article class="product" data-group="especiais"><img class="product-img" src="images/big-leaguer-frango-bacon-menu.webp" alt="Big Leaguer Frango e Bacon" loading="lazy" decoding="async"><div class="product-body"><div class="product-top"><h3>Big Leaguer Frango & Bacon</h3><span class="price">11€</span></div><p>Pão baguete de 25 cm, batata palito, 400g de frango, milho, queijo fundido e bacon.</p><span class="tag">Inclui batata frita</span></div></article>
+          <article class="product" data-group="especiais"><img class="product-img" src="images/crazy-game-menu.webp" alt="Crazy Game" loading="lazy" decoding="async"><div class="product-body"><div class="product-top"><h3>Crazy Game</h3><span class="price">11€</span></div><p>Cama de batatas fritas (350g), mix de carnes (400g), batata palito, milho, queijo fundido e bacon.</p><span class="tag">Prato especial</span></div></article>
+          <article class="product" data-group="entradas"><img class="product-img" src="images/cheddar-bacon-fries-menu.webp" alt="Batatas com queijo cheddar e bacon" loading="lazy" decoding="async"><div class="product-body"><div class="product-top"><h3>Batatas com Queijo Cheddar e Bacon</h3><span class="price">5€</span></div><p>Porção de batatas com queijo cheddar cremoso e bacon crocante.</p><span class="tag">Entrada</span></div></article>
+          <article class="product" data-group="entradas"><img class="product-img" src="images/tequenhos-menu.webp" alt="Tequenhos 6 unidades" loading="lazy" decoding="async"><div class="product-body"><div class="product-top"><h3>Tequenhos · 6 unidades</h3><span class="price">5€</span></div><p>Seis tequenhos dourados, ideais para entrada ou para partilhar.</p><span class="tag">Entrada</span></div></article>
+        </div>
+        <p class="source-note"><b>Observação:</b> preços e disponibilidade podem mudar. Confirme sempre o pedido diretamente com a loja.</p>
+      </div>
+    </section>
+
+    <section id="sobre">
+      <div class="wrap">
+        <div class="section-head"><div><h2>Simples, direto e feito para pedir rápido.</h2><p>O site mantém uma apresentação limpa, com informação objetiva para quem visita pelo telemóvel.</p></div></div>
+        <div class="about-grid">
+          <article class="info-card"><span>01</span><h3>Menu claro</h3><p>Produtos, descrições e preços visíveis sem complicação.</p></article>
+          <article class="info-card"><span>02</span><h3>Contacto rápido</h3><p>Botões para ligar, WhatsApp e direções para a loja.</p></article>
+          <article class="info-card"><span>03</span><h3>Boa reputação</h3><p>Avaliação 5,0 com 135 críticas indicadas na ficha pública.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="criticas">
+      <div class="wrap">
+        <div class="section-head"><div><h2>Críticas de clientes</h2><p>Comentários positivos partilhados publicamente sobre comida, serviço e ambiente.</p></div></div>
+        <div class="reviews">
+          <aside class="rating"><div><strong>5,0</strong><div class="stars">★★★★★</div></div><p><b>135 críticas</b><br>Comida elogiada, serviço rápido e ambiente agradável.</p></aside>
+          <article class="quote" aria-live="polite"><blockquote id="reviewText">“Recomendo ao 1000%. Adorei muito a comida e o sabor nem falar. O atendimento 5 estrelas e muita simpatia.”</blockquote><footer id="reviewAuthor">— Rafaela Guedes</footer><div class="review-controls"><button class="round" id="prevReview" type="button" aria-label="Crítica anterior">‹</button><button class="round" id="nextReview" type="button" aria-label="Crítica seguinte">›</button></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <div class="wrap">
+        <div class="section-head"><div><h2>Contacto e localização</h2><p>Para confirmar menu, horários ou encomendas, contacte diretamente a Play Burguer.</p></div></div>
+        <div class="contact-grid">
+          <div class="contact-list">
+            <div class="contact-row"><small>Morada</small><b>R. Direita de Aradas 29A</b><span>3810-005 Aveiro, Portugal</span></div>
+            <div class="contact-row"><small>Telefone</small><b><a href="tel:+351913407911">913 407 911</a></b><span>Contacto direto com a loja.</span><div class="contact-actions"><button class="btn btn-secondary" type="button" id="copyPhone">Copiar número</button><a class="btn btn-primary" href="tel:+351913407911">Ligar agora</a></div><div class="copy-ok" id="copyMsg"></div></div>
+            <div class="contact-row"><small>Pedidos</small><b>Take away e entrega</b><span>Confirme disponibilidade, preparação e zonas de entrega.</span><div class="contact-actions"><a class="btn btn-secondary" href="https://wa.me/351913407911" target="_blank" rel="noopener">Abrir WhatsApp</a></div></div>
+          </div>
+          <div class="map-card" id="mapa">
+            <div class="map-visual" aria-hidden="true"><svg viewBox="0 0 640 320" preserveAspectRatio="none"><path d="M-40 72 C112 22 189 104 311 66 C451 22 542 62 690 18" fill="none" stroke="#ffffff" stroke-width="34" opacity=".85"/><path d="M-40 248 C94 206 203 246 326 194 C463 136 544 204 690 166" fill="none" stroke="#ffffff" stroke-width="30" opacity=".8"/><path d="M120 -20 L168 350M392 -20 L326 350M540 -20 L602 350" stroke="#d7c6b2" stroke-width="16" opacity=".85"/><circle cx="354" cy="172" r="21" fill="#aa321f"/><circle cx="354" cy="172" r="7" fill="#fff"/></svg></div>
+            <div class="map-info"><h3>Play Burguer · Aradas</h3><p>J9G3+87 Aveiro</p><div class="contact-actions"><button class="btn btn-secondary" type="button" id="copyAddress">Copiar morada</button><a class="btn btn-secondary" href="https://www.google.com/maps/search/?api=1&query=R.%20Direita%20de%20Aradas%2029A%2C%203810-005%20Aveiro" target="_blank" rel="noopener">Abrir no Google Maps</a></div><div class="copy-ok" id="addressMsg" aria-live="polite"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta"><div class="wrap"><div class="cta-box"><div><h2>Fale com a Play Burguer.</h2><p>Confirme o pedido, horário ou disponibilidade diretamente com a loja.</p></div><a class="btn btn-primary" href="tel:+351913407911">913 407 911</a></div></div></section>
+  </main>
+
+  <footer><div class="wrap foot"><div><b>Play Burguer Aradas</b> · Hamburgueria em Aveiro</div><div>Comer no local · Take away · Entrega</div></div></footer>
+
+  <script>
+    const menuBtn=document.getElementById('menuBtn');const navLinks=document.getElementById('navLinks');
+    function closeMenu(){navLinks.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');}
+    menuBtn.addEventListener('click',()=>{const open=navLinks.classList.toggle('open');menuBtn.setAttribute('aria-expanded',String(open));});
+    navLinks.addEventListener('click',event=>{if(event.target.closest('a'))closeMenu();});
+
+    // These actions also work in the portable preview, where phone and map apps may not be available.
+    document.querySelectorAll('[data-scroll-target]').forEach(control=>control.addEventListener('click',event=>{
+      event.preventDefault();const target=document.getElementById(control.dataset.scrollTarget);if(!target)return;
+      target.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
+      closeMenu();
+    }));
+
+    const tabs=[...document.querySelectorAll('.tab')];const products=[...document.querySelectorAll('.product')];
+    tabs.forEach(tab=>tab.addEventListener('click',()=>{tabs.forEach(item=>{item.setAttribute('aria-selected','false');item.tabIndex=-1;});tab.setAttribute('aria-selected','true');tab.tabIndex=0;const filter=tab.dataset.filter;products.forEach(item=>item.hidden=!(filter==='todos'||item.dataset.group===filter));}));
+
+    const reviews=[['“Recomendo ao 1000%. Adorei muito a comida e o sabor nem falar. O atendimento 5 estrelas e muita simpatia.”','— Rafaela Guedes'],['“Comida muito boa, serviço atencioso e um ambiente muito agradável. Recomendo.”','— Barbara Dugarte'],['“A comida estava muito saborosa, tudo bem preparado e com bom tempero. As doses são boas e o serviço bastante rápido.”','— Katerin Arriojas']];let reviewIndex=0;const reviewText=document.getElementById('reviewText');const reviewAuthor=document.getElementById('reviewAuthor');
+    function renderReview(){reviewText.textContent=reviews[reviewIndex][0];reviewAuthor.textContent=reviews[reviewIndex][1];}
+    document.getElementById('nextReview').addEventListener('click',()=>{reviewIndex=(reviewIndex+1)%reviews.length;renderReview();});
+    document.getElementById('prevReview').addEventListener('click',()=>{reviewIndex=(reviewIndex-1+reviews.length)%reviews.length;renderReview();});
+
+    async function copyText(text,message){try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(text);}else{const field=document.createElement('textarea');field.value=text;field.setAttribute('readonly','');field.style.cssText='position:fixed;opacity:0';document.body.append(field);field.select();document.execCommand('copy');field.remove();}message.textContent='Copiado: '+text;}catch(error){message.textContent=text;}setTimeout(()=>message.textContent='',3000);}
+    const copyPhone=document.getElementById('copyPhone');const copyMsg=document.getElementById('copyMsg');copyPhone.addEventListener('click',()=>copyText('913 407 911',copyMsg));
+    const copyAddress=document.getElementById('copyAddress');const addressMsg=document.getElementById('addressMsg');copyAddress.addEventListener('click',()=>copyText('R. Direita de Aradas 29A, 3810-005 Aveiro',addressMsg));
+  </script>
+</body>
+</html>
